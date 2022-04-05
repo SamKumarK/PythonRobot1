@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.10.2 on win32)" generated="20220405 15:33:26.220" rpa="false" schemaversion="2">
+<suite id="s1" name="Project" source="C:\Users\SAM\PycharmProjects\pythonProject\TestProject\SampleProject\Project.robot">
+<test id="s1-t1" name="Google">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220405 15:33:26.486" level="INFO">Opening browser 'chrome' to base url 'https://www.google.com/'.</msg>
+<status status="PASS" starttime="20220405 15:33:26.486" endtime="20220405 15:33:29.007"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220405 15:33:29.008" endtime="20220405 15:33:29.140"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>xpath://input[@name='q']</arg>
+<arg>Python+ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220405 15:33:29.143" level="INFO">Sending key(s) ('Python+ENTER',) to xpath://input[@name='q'] element.</msg>
+<msg timestamp="20220405 15:33:29.469" level="INFO">Sending keys Python</msg>
+<msg timestamp="20220405 15:33:29.469" level="INFO">Pressing special key ENTER down.</msg>
+<msg timestamp="20220405 15:33:29.469" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20220405 15:33:29.141" endtime="20220405 15:33:31.479"/>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${AllLinksCount}</var>
+<arg>xpath://a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20220405 15:33:31.495" level="INFO">${AllLinksCount} = 14</msg>
+<status status="PASS" starttime="20220405 15:33:31.480" endtime="20220405 15:33:31.495"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{LinkItems}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220405 15:33:31.495" level="INFO">@{LinkItems} = [ ]</msg>
+<status status="PASS" starttime="20220405 15:33:31.495" endtime="20220405 15:33:31.495"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>1</value>
+<value>${AllLinksCount}+1</value>
+<iter>
+<var name="${i}">1</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:31.522" level="INFO">${linkText} = Welcome to Python.org</msg>
+<status status="PASS" starttime="20220405 15:33:31.496" endtime="20220405 15:33:31.522"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:31.547" level="INFO">${linkUrl} = https://www.python.org</msg>
+<status status="PASS" starttime="20220405 15:33:31.522" endtime="20220405 15:33:31.547"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:31.548" endtime="20220405 15:33:31.548"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:31.692" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot1.png"&gt;&lt;img src="screenshot1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:31.548" endtime="20220405 15:33:31.692"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:31.496" endtime="20220405 15:33:31.692"/>
+</iter>
+<iter>
+<var name="${i}">2</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:31.714" level="INFO">${linkText} = Python Tutorial - W3Schools</msg>
+<status status="PASS" starttime="20220405 15:33:31.692" endtime="20220405 15:33:31.714"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:31.741" level="INFO">${linkUrl} = https://www.w3schools.com › python</msg>
+<status status="PASS" starttime="20220405 15:33:31.715" endtime="20220405 15:33:31.742"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:31.742" endtime="20220405 15:33:31.743"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:31.884" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot2.png"&gt;&lt;img src="screenshot2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:31.743" endtime="20220405 15:33:31.884"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:31.692" endtime="20220405 15:33:31.884"/>
+</iter>
+<iter>
+<var name="${i}">3</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:31.915" level="INFO">${linkText} = </msg>
+<status status="PASS" starttime="20220405 15:33:31.884" endtime="20220405 15:33:31.916"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:31.942" level="INFO">${linkUrl} = </msg>
+<status status="PASS" starttime="20220405 15:33:31.916" endtime="20220405 15:33:31.942"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:31.942" endtime="20220405 15:33:31.943"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:32.116" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot3.png"&gt;&lt;img src="screenshot3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:31.943" endtime="20220405 15:33:32.116"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:31.884" endtime="20220405 15:33:32.116"/>
+</iter>
+<iter>
+<var name="${i}">4</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:32.138" level="INFO">${linkText} = </msg>
+<status status="PASS" starttime="20220405 15:33:32.117" endtime="20220405 15:33:32.138"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:32.156" level="INFO">${linkUrl} = </msg>
+<status status="PASS" starttime="20220405 15:33:32.138" endtime="20220405 15:33:32.156"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:32.156" endtime="20220405 15:33:32.157"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:32.336" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot4.png"&gt;&lt;img src="screenshot4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:32.157" endtime="20220405 15:33:32.336"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:32.116" endtime="20220405 15:33:32.336"/>
+</iter>
+<iter>
+<var name="${i}">5</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:32.365" level="INFO">${linkText} = </msg>
+<status status="PASS" starttime="20220405 15:33:32.337" endtime="20220405 15:33:32.365"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:32.389" level="INFO">${linkUrl} = </msg>
+<status status="PASS" starttime="20220405 15:33:32.365" endtime="20220405 15:33:32.390"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:32.390" endtime="20220405 15:33:32.390"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:32.555" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot5.png"&gt;&lt;img src="screenshot5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:32.391" endtime="20220405 15:33:32.555"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:32.337" endtime="20220405 15:33:32.555"/>
+</iter>
+<iter>
+<var name="${i}">6</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:32.577" level="INFO">${linkText} = </msg>
+<status status="PASS" starttime="20220405 15:33:32.556" endtime="20220405 15:33:32.577"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:32.599" level="INFO">${linkUrl} = </msg>
+<status status="PASS" starttime="20220405 15:33:32.578" endtime="20220405 15:33:32.599"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:32.599" endtime="20220405 15:33:32.600"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:32.736" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot6.png"&gt;&lt;img src="screenshot6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:32.600" endtime="20220405 15:33:32.736"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:32.555" endtime="20220405 15:33:32.736"/>
+</iter>
+<iter>
+<var name="${i}">7</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:32.765" level="INFO">${linkText} = Python (programming language) - Wikipedia</msg>
+<status status="PASS" starttime="20220405 15:33:32.737" endtime="20220405 15:33:32.765"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:32.791" level="INFO">${linkUrl} = https://en.wikipedia.org › wiki › Python_(programming...</msg>
+<status status="PASS" starttime="20220405 15:33:32.766" endtime="20220405 15:33:32.791"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:32.792" endtime="20220405 15:33:32.792"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:32.965" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot7.png"&gt;&lt;img src="screenshot7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:32.793" endtime="20220405 15:33:32.966"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:32.737" endtime="20220405 15:33:32.966"/>
+</iter>
+<iter>
+<var name="${i}">8</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:32.993" level="INFO">${linkText} = Python Tutorial - Tutorialspoint</msg>
+<status status="PASS" starttime="20220405 15:33:32.966" endtime="20220405 15:33:32.993"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:33.024" level="INFO">${linkUrl} = https://www.tutorialspoint.com › python</msg>
+<status status="PASS" starttime="20220405 15:33:32.994" endtime="20220405 15:33:33.024"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:33.024" endtime="20220405 15:33:33.025"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:33.204" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot8.png"&gt;&lt;img src="screenshot8.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:33.025" endtime="20220405 15:33:33.204"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:32.966" endtime="20220405 15:33:33.204"/>
+</iter>
+<iter>
+<var name="${i}">9</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:33.229" level="INFO">${linkText} = Online Python Compiler (Interpreter) - Programiz</msg>
+<status status="PASS" starttime="20220405 15:33:33.204" endtime="20220405 15:33:33.229"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:33.254" level="INFO">${linkUrl} = https://www.programiz.com › python-programming › o...</msg>
+<status status="PASS" starttime="20220405 15:33:33.229" endtime="20220405 15:33:33.254"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:33.254" endtime="20220405 15:33:33.255"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:33.410" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot9.png"&gt;&lt;img src="screenshot9.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:33.255" endtime="20220405 15:33:33.411"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:33.204" endtime="20220405 15:33:33.411"/>
+</iter>
+<iter>
+<var name="${i}">10</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:33.439" level="INFO">${linkText} = Python Courses &amp; Tutorials | Codecademy</msg>
+<status status="PASS" starttime="20220405 15:33:33.411" endtime="20220405 15:33:33.439"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:33.468" level="INFO">${linkUrl} = https://www.codecademy.com › catalog › language › p...</msg>
+<status status="PASS" starttime="20220405 15:33:33.440" endtime="20220405 15:33:33.468"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:33.468" endtime="20220405 15:33:33.469"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:33.618" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot10.png"&gt;&lt;img src="screenshot10.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:33.469" endtime="20220405 15:33:33.618"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:33.411" endtime="20220405 15:33:33.618"/>
+</iter>
+<iter>
+<var name="${i}">11</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:33.640" level="INFO">${linkText} = </msg>
+<status status="PASS" starttime="20220405 15:33:33.618" endtime="20220405 15:33:33.640"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:33.660" level="INFO">${linkUrl} = </msg>
+<status status="PASS" starttime="20220405 15:33:33.640" endtime="20220405 15:33:33.660"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:33.660" endtime="20220405 15:33:33.661"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:33.809" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot11.png"&gt;&lt;img src="screenshot11.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:33.661" endtime="20220405 15:33:33.809"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:33.618" endtime="20220405 15:33:33.809"/>
+</iter>
+<iter>
+<var name="${i}">12</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:33.830" level="INFO">${linkText} = </msg>
+<status status="PASS" starttime="20220405 15:33:33.809" endtime="20220405 15:33:33.830"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:33.853" level="INFO">${linkUrl} = </msg>
+<status status="PASS" starttime="20220405 15:33:33.830" endtime="20220405 15:33:33.853"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:33.853" endtime="20220405 15:33:33.854"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:34.017" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot12.png"&gt;&lt;img src="screenshot12.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:33.854" endtime="20220405 15:33:34.018"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:33.809" endtime="20220405 15:33:34.018"/>
+</iter>
+<iter>
+<var name="${i}">13</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:34.042" level="INFO">${linkText} = </msg>
+<status status="PASS" starttime="20220405 15:33:34.018" endtime="20220405 15:33:34.042"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:34.064" level="INFO">${linkUrl} = </msg>
+<status status="PASS" starttime="20220405 15:33:34.042" endtime="20220405 15:33:34.064"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:34.064" endtime="20220405 15:33:34.064"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:34.220" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot13.png"&gt;&lt;img src="screenshot13.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:34.065" endtime="20220405 15:33:34.220"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:34.018" endtime="20220405 15:33:34.220"/>
+</iter>
+<iter>
+<var name="${i}">14</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkText}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')]/parent::div//preceding-sibling::h3)[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:34.240" level="INFO">${linkText} = </msg>
+<status status="PASS" starttime="20220405 15:33:34.220" endtime="20220405 15:33:34.240"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${linkUrl}</var>
+<arg>xpath:(//a//div/child::cite[contains(text(),'https')])[${i}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220405 15:33:34.260" level="INFO">${linkUrl} = </msg>
+<status status="PASS" starttime="20220405 15:33:34.240" endtime="20220405 15:33:34.260"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${linkText} - ${linkUrl}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220405 15:33:34.260" endtime="20220405 15:33:34.260"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>./screenshot${i}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220405 15:33:34.439" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshot14.png"&gt;&lt;img src="screenshot14.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220405 15:33:34.261" endtime="20220405 15:33:34.439"/>
+</kw>
+<status status="PASS" starttime="20220405 15:33:34.220" endtime="20220405 15:33:34.439"/>
+</iter>
+<status status="PASS" starttime="20220405 15:33:31.495" endtime="20220405 15:33:34.439"/>
+</for>
+<status status="PASS" starttime="20220405 15:33:26.485" endtime="20220405 15:33:34.440"/>
+</test>
+<status status="PASS" starttime="20220405 15:33:26.222" endtime="20220405 15:33:34.441"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Project">Project</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
